@@ -1,0 +1,25 @@
+services:
+  hbase:
+    build:
+      context: .
+      args:
+        HBASE_VERSION: 2.5.16
+    image: section10-hbase:2.5.16
+    hostname: hbase
+    ports:
+      - "127.0.0.1:16010:16010"
+    volumes:
+      - hbase_data:/var/lib/hbase
+      - ./data:/workspace/data
+      - ./output:/workspace/output
+      - ./scripts:/workspace/scripts:ro
+      - ./java:/workspace/java:ro
+    healthcheck:
+      test: ["CMD-SHELL", "hbase shell -n -e 'status' >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 45s
+    restart: unless-stopped
+volumes:
+  hbase_data:

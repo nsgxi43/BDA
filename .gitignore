@@ -1,0 +1,10 @@
+data/source/*
+data/processed/*
+data/hbase-data/*
+!data/source/.gitkeep
+!data/processed/.gitkeep
+output/java/
+output/*.tmp
+!output/.gitkeep
+!figures/.gitkeep
+.DS_Store

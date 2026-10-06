@@ -1,0 +1,6 @@
+.git
+data/source
+data/processed
+data/hbase-data
+output
+figures
